@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router';
+import React, { Component } from "react";
+import {Link} from "react-router";
 
-import {Accounts} from 'meteor/accounts-base';
+import {Accounts} from "meteor/accounts-base";
  export  default class Signup extends Component {
    constructor(props){
     super(props);
     this.state = {
-      error:''
+      error:""
     };
    }
    onSubmit(e){
@@ -16,13 +16,13 @@ import {Accounts} from 'meteor/accounts-base';
      let password = this.refs.password.value.trim();
 
     Accounts.createUser({email:email,password},(err)=>{
-        console.log('signup callback', err);
+        if(err){
+          this.setState({error: err.reason});
+        }else{
+          this.setState({error:""});
+        }
 
     })
-
-    //  this.setState({
-    //    error: "Something went wrong"
-    //  })
 
    }
     render() {

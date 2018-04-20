@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router';
+import React, { Component } from "react";
+import {Link} from "react-router";
 
-import {Meteor} from 'meteor/meteor';
+import {Meteor} from "meteor/meteor";
 
 
 export default class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-          error:''
+          error:""
         };
        }
 
@@ -19,7 +19,11 @@ export default class Login extends Component {
         let password = this.refs.password.value.trim();
    
         Meteor.loginWithPassword({email:email}, password, (err) =>{
-            console.log('Login callback', err);
+            if(err){
+                this.setState({error:"Unable to login! Check email and password!"})
+            }else{
+                this.setState({error:""})
+            }
         });
       }
 
@@ -35,7 +39,7 @@ export default class Login extends Component {
             <button> Login</button>
           </form>
           <br/>
-                <Link to="/signup">Have an account?</Link>
+                <Link to="/signup">Don't have an account?</Link>
             </div>
         );
     }
