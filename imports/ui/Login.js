@@ -33,7 +33,7 @@ export default class Login extends Component {
 
             <h1>Log IN </h1>
           {this.state.error ? <p>{this.state.error}</p> : undefined}
-          <form onSubmit={this.onSubmit.bind(this)}> 
+          <form onSubmit={this.onSubmit.bind(this)} noValidate> 
             <input type="email" ref="email" name="email" placeholder="Email"/>
             <input type="password" ref="password" name="password" placeholder="Password"/>
             <button> Login</button>
