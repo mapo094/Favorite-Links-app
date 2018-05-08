@@ -8,7 +8,7 @@ import '../imports/startup/simple-schema-configuration.js';
 Meteor.startup(() => {
   // code to run on server at startup
 
-
+  //Node server 
   WebApp.connectHandlers.use((req,res,next) => {
     // console.log("This is from middleware");
     // console.log(req.url, req.method, req.headers,req.query);

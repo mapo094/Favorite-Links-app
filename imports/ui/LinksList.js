@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {Meteor} from "meteor/meteor";
 import {Tracker} from "meteor/tracker";
+import {Session} from "meteor/session";
 
 import { Links } from '../api/links';
+import LinksListItem from './LinkListItem';
 
 export default class LinksList extends Component {
     constructor(props){
@@ -18,18 +20,22 @@ export default class LinksList extends Component {
         // We create publish -'links' and we can access it with subscribe('name')
         // It's come from api/links and show links from db
            Meteor.subscribe("links")
-            const links = Links.find().fetch();
+            const links = Links.find({
+                visible: Session.get('showVisible')
+            }).fetch();
             this.setState({links});
           })
     }
     
     componentWillUnmount(){
         console.log("Component will unmount LinkList")
-        // this.linksTracker.stop();
+        this.linksTracker.stop();
     }
     renderLinksListItems(link){
         return this.state.links.map((link)=>{
-            return <p key={link._id}>{link.url}</p>
+            const shortUrl = Meteor.absoluteUrl(link._id);
+            return <LinksListItem key={link._id} shortUrl={shortUrl} {...link} />
+            // return <p key={link._id}>{link.url}</p>
         })
         
     }
