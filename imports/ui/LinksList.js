@@ -19,7 +19,7 @@ export default class LinksList extends Component {
        this.linksTracker = Tracker.autorun(()=>{
         // We create publish -'links' and we can access it with subscribe('name')
         // It's come from api/links and show links from db
-           Meteor.subscribe("links")
+            Meteor.subscribe("links")
             const links = Links.find({
                 visible: Session.get('showVisible')
             }).fetch();

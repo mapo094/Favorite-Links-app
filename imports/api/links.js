@@ -31,7 +31,9 @@ Meteor.methods({
             _id: shortid.generate(),
             url:url,
             userId: this.userId,
-            visible: true
+            visible: true,
+            visitedCount: 0,
+            lastVisitedAd: null
         })
     },
     'links.setVisibility'(_id,visible){
@@ -55,5 +57,16 @@ Meteor.methods({
                 $set: { "visible": visible}
             });
 
+    },
+    'links.trackVisit'(_id){
+        
+        Links.update({_id},{
+            $set:{
+                lastVisitedAt: new Date().getTime()
+            },
+            $inc: {
+                visitedCount: 1
+            }
+        })
     }
 })

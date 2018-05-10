@@ -1,17 +1,19 @@
 import { Meteor } from 'meteor/meteor';
 import {WebApp} from "meteor/webapp";
- 
+import moment from 'moment'; 
+
 import '../imports/api/users';
 import {Links} from '../imports/api/links';
 import '../imports/startup/simple-schema-configuration.js';
 
 Meteor.startup(() => {
   // code to run on server at startup
+  let now = new Date().getTime();
 
+  let momentNow = moment(now);
+  console.log(momentNow.fromNow())
   //Node server 
   WebApp.connectHandlers.use((req,res,next) => {
-    // console.log("This is from middleware");
-    // console.log(req.url, req.method, req.headers,req.query);
     
     // if path id is real its redirect you to the current website
     const _id = req.url.slice(1);
@@ -20,6 +22,7 @@ Meteor.startup(() => {
     if(link){
       res.statusCode = 302;
       res.setHeader("Location", link.url);
+      Meteor.call('links.trackVisit',_id);
       res.end();
     }
     else{
