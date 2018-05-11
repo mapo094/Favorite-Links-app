@@ -30,16 +30,18 @@ import {Accounts} from "meteor/accounts-base";
    }
     render() {
       return (
-        <div>
-          <p>Sign up</p>
-          {this.state.error ? <p>{this.state.error}</p> : undefined}
-          <form onSubmit={this.onSubmit.bind(this)} noValidate> 
-            <input type="email" ref="email" name="email" placeholder="Email"/>
-            <input type="password" ref="password" name="password" placeholder="Password"/>
-            <button> Create Account</button>
-          </form>
-          <br/>
-          <Link to="/">Alreary have an account ?</Link>
+        <div className="boxed-view">
+          <div className="boxed-view__box">
+            <h1>Sign up</h1>
+            {this.state.error ? <p>{this.state.error}</p> : undefined}
+            <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view__form"> 
+              <input type="email" ref="email" name="email" placeholder="Email"/>
+              <input type="password" ref="password" name="password" placeholder="Password"/>
+              <button> Create Account</button>
+            </form>
+            <br/>
+            <Link to="/">Alreary have an account ?</Link>
+            </div>
         </div>
       );
     }
