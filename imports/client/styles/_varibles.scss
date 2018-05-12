@@ -1,4 +1,5 @@
 //Colors
+$brand-primray:#5b4681;
 $grey: #dddddd;
 
 //Spacing
@@ -9,7 +10,16 @@ $base-font-size: 1.4rem;
 
 //Form inputs
 $input-border: #dddddd;
+$input-spacing: 1rem;
 
 //Boxed view area
 $boxed-view-overlay-bg: #dddddd;
 $boxed-view-bg: white;
+
+// Button
+$button-bg: $brand-primray;
+$button-color:white;
+$button-pill-color: #5b4681;
+$button-secondary-bg:#f9f9f9;
+$button-secondary-color:#777777;
+$button-secondary-border-color:$grey;

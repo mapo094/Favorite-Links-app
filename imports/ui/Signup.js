@@ -37,7 +37,7 @@ import {Accounts} from "meteor/accounts-base";
             <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view__form"> 
               <input type="email" ref="email" name="email" placeholder="Email"/>
               <input type="password" ref="password" name="password" placeholder="Password"/>
-              <button> Create Account</button>
+              <button className="button"> Create Account</button>
             </form>
             <br/>
             <Link to="/">Alreary have an account ?</Link>
