@@ -31,6 +31,8 @@ export const onAuthChange = (isAuthenticated) => {
     browserHistory.replace("/links");
   }else if (authenticatedPages && !isAuthenticated){
     browserHistory.replace("/");
+  }else if(isUnauthenticatedPage && isUnauthenticated){
+    browserHistory.replace("/"+ pathname)
   }
 };
 

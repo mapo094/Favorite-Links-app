@@ -11,9 +11,11 @@ export default ()=>{
     return(
         <div>
             <PrivateHeader title="Your links"/>
-            <LinkListFilter/>
-            <AddLink/>
-            <LinksList/>
+            <div className="page-content">
+                <LinkListFilter/>
+                <AddLink/>
+                <LinksList/>
+            </div>
         </div>
     )
 }

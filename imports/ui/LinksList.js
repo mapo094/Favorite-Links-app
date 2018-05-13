@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Meteor} from "meteor/meteor";
 import {Tracker} from "meteor/tracker";
 import {Session} from "meteor/session";
+import FlipMove from 'react-flip-move';
 
 import { Links } from '../api/links';
 import LinksListItem from './LinkListItem';
@@ -31,7 +32,15 @@ export default class LinksList extends Component {
         console.log("Component will unmount LinkList")
         this.linksTracker.stop();
     }
-    renderLinksListItems(link){
+    renderLinksListItems(){
+
+        if(this.state.links.length === 0){
+            return ( 
+                <div className="item">
+                    <p className="item__status-message">No Links Found</p>
+                </div>
+            );
+        }
         return this.state.links.map((link)=>{
             const shortUrl = Meteor.absoluteUrl(link._id);
             return <LinksListItem key={link._id} shortUrl={shortUrl} {...link} />
@@ -43,9 +52,9 @@ export default class LinksList extends Component {
         return (
             <div>
                 <p>Links</p>
-                <div>
+                <FlipMove maintainContainerHeight={true}>
                     {this.renderLinksListItems()}
-                </div>
+                </FlipMove>
             </div>
         );
     }
