@@ -1,8 +1,8 @@
-Short link
+# Short link
 
 This is a link shortener built on Meteor and React.
 
-Authors:
+## Authors:
 Mariyan Iliev
 
 To install dependencies type:
