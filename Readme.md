@@ -10,3 +10,6 @@ To install dependencies type:
 
 To run the app type:
 - meteor run
+
+Demo:
+https://store-link-mapo.herokuapp.com/
