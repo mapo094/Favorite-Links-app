@@ -28,7 +28,7 @@ Meteor.methods({
         
 
         Links.insert({
-            _id: shortid.generate(),
+             _id: shortid.generate(),
             url:url,
             userId: this.userId,
             visible: true,
